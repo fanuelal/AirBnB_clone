@@ -42,7 +42,15 @@ class BaseModel:
         """
         return dict rep of the obj
         """
-        pass
+        dict_repr = {}
+        for key, value in self.__dict__.items():
+            dict_repr[key] = value
+            if isinstance(value, datetime):
+                dict_repr[key] = value.strftime("%Y-%m-%dT%H:%M:%S.%f")
+        dict_repr["__class__"] = type(self).__name__
+        return dict_repr
+
+
 
 
 
