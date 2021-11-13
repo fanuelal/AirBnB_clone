@@ -14,7 +14,7 @@ class BaseModel:
     |___| /   \  __| |__  |  |_|  | |__| |__/ |__ |__
     """
 
-    def __init__(self):
+    def __init__(self, *args, **kwargs):
         """
         initializing  the public attr of the instance after creation
         """
@@ -22,7 +22,13 @@ class BaseModel:
         dateFormat = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid.uuid4())
         self.created_at = datetime.today()
-        self.updated_at = self.created_at
+        self.updated_at = datetime.today()
+        if len(kwargs) is not None:
+            for key,value in kwargs.items():
+                if key == "created_at" or key == "uptated_at":
+                    self.__dict__[key] = datetime.strptime(value, dateFormat)
+                else:
+                    self.__dict__[key] = value
 
     def __str__(self):
         """
