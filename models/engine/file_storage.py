@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import json
 from json import JSONEncoder
 from datetime import datetime
