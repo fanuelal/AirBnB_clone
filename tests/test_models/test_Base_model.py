@@ -35,7 +35,7 @@ class TestBaseModel(unittest.TestCase):
         """
         checking if instace give the correct output
         """
-        dict_model = {
+        dictModel = {
                       'my_number' : 89,
                       'name' : 'Holberton',
                       '__class__' : 'BaseModel',
@@ -43,11 +43,17 @@ class TestBaseModel(unittest.TestCase):
                       'id' : 'b6a6e15c-c67d-4312-9a75-9d084935e579',
                       'created_at' : '2017-09-28T21:05:54.119427'
                      }
-        myModel = BaseModel(**model_dict)
+        myModel = BaseModel(**dictModel)
         self.assertIsInstance(myModel, BaseModel)
         self.assertEqual(myModel.my_number, 89)
         self.assertEqual(myModel.name, 'Holberton')
         self.assertEqual(myModel.id, 'b6a6e15c-c67d-4312-9a75-9d084935e579')
+
+    def test_assignment(self):
+        self.model.name = 'Holberton'
+        self.model.my_number = 89
+        self.assertIs(self.model.name, 'Holberton')
+        self.assertIs(self.model.my_number, 89)
 
 if __name__ == '__main__':
     unittest.main()
