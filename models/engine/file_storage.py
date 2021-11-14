@@ -70,4 +70,5 @@ class FileStorage:
                     cls = eval(strObj['__class__'])
                     newObj = cls(**strObj)
                     self.new(newObj)
-
+        except FileNotFoundError:
+            pass
