@@ -2,7 +2,6 @@ import json
 from json import JSONEncoder
 from datetime import datetime
 import models
-from base_model import BaseModel
 
 """
 FILE STORAGE IN JSON FILE
@@ -12,7 +11,7 @@ class MyEncoder(JSONEncoder):
     making a class json serializable
     """
     def default(self, o):
-        if isInstance(o, BaseModel):
+        if isInstance(o, models.base_model.BaseModel):
             return o.to_dict()
         return super().default()
 
