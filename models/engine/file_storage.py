@@ -57,8 +57,7 @@ class FileStorage:
         If the file doesn’t exist, no exception
         """
         file = FileStorage.__file_path
-        if not os.path.exists(file):
-            pass
+
         try:
             with open(file, 'r') as jsonFile:
                 """ deserialize json str into a dict"""
