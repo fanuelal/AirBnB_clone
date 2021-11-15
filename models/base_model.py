@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """
-Defining a class BaseModel that defines all common attributes/methods for other classes
+Defining a class BaseModel that defines all common
+attributes/methods for other classes
 """
 
 import uuid
@@ -25,7 +26,7 @@ class BaseModel:
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
         if len(kwargs) is not None:
-            for key,value in kwargs.items():
+            for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
                     self.__dict__[key] = datetime.strptime(value, dateFormat)
                 else:
@@ -42,7 +43,8 @@ class BaseModel:
 
     def save(self):
         """
-        updates the public instance attribute updated_at with the current datetime
+        updates the public instance
+        attribute updated_at with the current datetime
         """
 
         self.updated_at = datetime.today()
@@ -59,9 +61,3 @@ class BaseModel:
                 dict_repr[key] = value.strftime("%Y-%m-%dT%H:%M:%S.%f")
         dict_repr["__class__"] = type(self).__name__
         return dict_repr
-
-
-
-
-
-
