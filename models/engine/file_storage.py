@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
 import json
+from models.base_model import BaseModel
+import os
 from json import JSONEncoder
 from datetime import datetime
-import models
 
 """
 FILE STORAGE IN JSON FILE
@@ -58,13 +59,13 @@ class FileStorage:
         deserializes the JSON file to __objects  (only if the JSON file (__file_path) exists ;
         otherwise, do nothing. If the file doesn’t exist, no exception should be raised)
         """
-        file = FileStorage__file_path
+        file = FileStorage.__file_path
         if not os.path.exists(file):
             pass
         try:
             with open(file, 'r') as jsonFile:
                 """ deserialize json str into a dict"""
-                dictObj = json.loads(jsonFile)
+                dictObj = json.load(jsonFile)
                 for strObj in dictObj.values():
                     """calling a class instance from dict return"""
                     cls = eval(strObj['__class__'])

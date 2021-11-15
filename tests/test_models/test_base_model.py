@@ -55,5 +55,16 @@ class TestBaseModel(unittest.TestCase):
         self.assertIs(self.model.name, 'Holberton')
         self.assertIs(self.model.my_number, 89)
 
+    def test_time(self):
+        self.assertDateTimeAlmostEqual(self.model.created_at, self.model.updated_at)
+
+    def test_str_class(self):
+        """testing whether stringified class outputs correctly"""
+
+        str_class = self.model.__str__()
+        required = f'[{self.model.__class__.__name__}] ({slef.model.id}) {self.model.__dict__}'
+        self.assertEqual(str_class, required)
+
+
 if __name__ == '__main__':
     unittest.main()
