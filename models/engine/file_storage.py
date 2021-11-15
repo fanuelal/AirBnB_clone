@@ -2,7 +2,7 @@
 import json
 from json import JSONEncoder
 from datetime import datetime
-import models
+import os
 
 """
 FILE STORAGE IN JSON FILE
@@ -56,7 +56,7 @@ class FileStorage:
         otherwise, do nothing.
         If the file doesn’t exist, no exception
         """
-        file = FileStorage__file_path
+        file = FileStorage.__file_path
         if not os.path.exists(file):
             pass
         try:
@@ -69,4 +69,4 @@ class FileStorage:
                     newObj = cls(**strObj)
                     self.new(newObj)
         except FileNotFoundError:
-            pass
+            return
