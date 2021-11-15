@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 import json
 from json import JSONEncoder
 from datetime import datetime
@@ -8,27 +7,26 @@ import models
 """
 FILE STORAGE IN JSON FILE
 """
+
+
 class MyEncoder(JSONEncoder):
-    """
-    making a class json serializable
-    """
+    """making a class json serializable"""
     def default(self, o):
         if isInstance(o, models.base_model.BaseModel):
             return o.to_dict()
         return super().default()
 
 
-
 class FileStorage:
     """
     private Attributes:
-    	__file_path (str): the path of the json file
-    	__objects (dict): A dictionary of instatiated obj
+    __file_path (str): the path of the json file
+    __objects (dict): A dictionary of instatiated obj
     public instance methods:
-    	all(self): returns the dictionary __objects
-    	new(self, obj): sets in __objects the obj with key <obj class name>.id
-    	save(self): serializes __objects to the JSON file (path: __file_path)
-    	reload(self): deserializes the JSON file to __objects
+    all(self): returns the dictionary __objects
+    new(self, obj): sets in __objects the obj with key <obj class name>.id
+    save(self): serializes __objects to the JSON file (path: __file_path)
+    reload(self): deserializes the JSON file to __objects
     """
 
     __file_path = "file.json"
@@ -50,13 +48,13 @@ class FileStorage:
         """
         file = FileStorage.__file_path
         with open(file, 'w') as jsonFile:
-            jsonFile.write(json.dumps(FileStorage.__objects,
-                    cls=MyEncoder))
+            jsonFile.write(json.dumps(FileStorage.__objects, cls=MyEncoder))
 
     def reload(self):
         """
-        deserializes the JSON file to __objects  (only if the JSON file (__file_path) exists ;
-        otherwise, do nothing. If the file doesn’t exist, no exception should be raised)
+        deserializes the JSON file to __objects
+        otherwise, do nothing.
+        If the file doesn’t exist, no exception
         """
         file = FileStorage__file_path
         if not os.path.exists(file):
