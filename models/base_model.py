@@ -6,7 +6,6 @@ attributes/methods for other classes
 
 import uuid
 from datetime import datetime
-import models
 
 
 class BaseModel:
