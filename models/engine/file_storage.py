@@ -1,9 +1,16 @@
 #!/usr/bin/python3
 import json
+from models.base_model import BaseModel
+import os
 from json import JSONEncoder
 from datetime import datetime
+<<<<<<< HEAD
 import os
 from models.base_model import BaseModel
+=======
+from models.user import User
+
+>>>>>>> models
 """
 FILE STORAGE IN JSON FILE
 """
@@ -48,11 +55,18 @@ class FileStorage:
         serializes __objects to the JSON file(path: __file_path)
         """
         file = FileStorage.__file_path
+<<<<<<< HEAD
         FileStorage.__objects = models.base_model.BaseModel.to_dict.dict_repr
         """ jsnDump=json.dumps(FileStorage.__objects)"""
         with open(file, "w", encoding="utf-8") as jsonFile:
             json.dump(FileStorage.__objects, jsonFile)
             
+=======
+        FileStorage.__objects = BaseModel.to_dict()
+        with open(file, 'w') as jsonFile:
+            jsonFile.write(json.dumps(FileStorage.__objects,
+                    cls=MyEncoder))
+>>>>>>> models
 
     def reload(self):
         """
@@ -61,6 +75,7 @@ class FileStorage:
         If the file doesn’t exist, no exception
         """
         file = FileStorage.__file_path
+<<<<<<< HEAD
         """FileStorage.__objects = BaseModel.to_dict()"""
         if not os.path.isfile(file):
             return
@@ -71,3 +86,18 @@ class FileStorage:
                 dict_loaded = {key: value.to_dict() for key, value in FileStorage.__objects.items()}
             """json.dump(dict_loaded, jsonFile)
 """
+=======
+        if not os.path.exists(file):
+            pass
+        try:
+            with open(file, 'r') as jsonFile:
+                """ deserialize json str into a dict"""
+                dictObj = json.load(jsonFile)
+                for strObj in dictObj.values():
+                    """calling a class instance from dict return"""
+                    cls = eval(strObj['__class__'])
+                    newObj = cls(**strObj)
+                    self.new(newObj)
+        except FileNotFoundError:
+            pass
+>>>>>>> models

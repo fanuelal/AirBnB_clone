@@ -7,6 +7,10 @@ attributes/methods for other classes
 import uuid
 from datetime import datetime
 from models import storage
+<<<<<<< HEAD
+=======
+
+>>>>>>> models
 
 class BaseModel:
     """
@@ -22,10 +26,17 @@ class BaseModel:
 
         dateFormat = "%Y-%m-%dT%H:%M:%S.%f"
         self.id = str(uuid.uuid4())
+<<<<<<< HEAD
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
         if kwargs is not None:
             for key, value in kwargs.items():
+=======
+        self.created_at = datetime.today()
+        self.updated_at = datetime.today()
+        if kwargs is not None:
+            for key,value in kwargs.items():
+>>>>>>> models
                 if key == "created_at" or key == "updated_at":
                     self.__dict__[key] = datetime.strptime(value, dateFormat)
                 else:
