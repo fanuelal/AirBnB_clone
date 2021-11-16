@@ -3,7 +3,7 @@ import json
 from json import JSONEncoder
 from datetime import datetime
 import os
-
+from models.base_model import BaseModel
 """
 FILE STORAGE IN JSON FILE
 """
@@ -38,17 +38,21 @@ class FileStorage:
 
     def new(self, obj):
         """Set in __objects obj with key"""
-
-        if obj is not None:
-            FileStorage.__objects[f'{obj.__class__.__name__}.{obj.id}'] = obj
+        key = "{}.{}".format(type(obj).__name__, obj.id)
+        FileStorage.__objects[key] = obj
+        #if obj is not None:
+         #   FileStorage.__objects[f'{obj.__class__.__name__}.{obj.id}'] = obj
 
     def save(self):
         """
         serializes __objects to the JSON file(path: __file_path)
         """
         file = FileStorage.__file_path
-        with open(file, 'w') as jsonFile:
-            jsonFile.write(json.dumps(FileStorage.__objects, cls=MyEncoder))
+        FileStorage.__objects = models.base_model.BaseModel.to_dict.dict_repr
+        """ jsnDump=json.dumps(FileStorage.__objects)"""
+        with open(file, "w", encoding="utf-8") as jsonFile:
+            json.dump(FileStorage.__objects, jsonFile)
+            
 
     def reload(self):
         """
@@ -57,15 +61,13 @@ class FileStorage:
         If the file doesn’t exist, no exception
         """
         file = FileStorage.__file_path
-
-        try:
-            with open(file, 'r') as jsonFile:
-                """ deserialize json str into a dict"""
-                dictObj = json.loads(jsonFile)
-                for strObj in dictObj.values():
-                    """calling a class instance from dict return"""
-                    cls = eval(strObj['__class__'])
-                    newObj = cls(**strObj)
-                    self.new(newObj)
-        except FileNotFoundError:
+        """FileStorage.__objects = BaseModel.to_dict()"""
+        if not os.path.isfile(file):
             return
+        else:
+            with open(file, 'r', encoding="utf-8") as jsonFile:
+                """ deserialize json str into a dict"""
+                dictObj = json.load(jsonFile)
+                dict_loaded = {key: value.to_dict() for key, value in FileStorage.__objects.items()}
+            """json.dump(dict_loaded, jsonFile)
+"""
