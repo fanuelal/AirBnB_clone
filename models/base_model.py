@@ -5,7 +5,7 @@ Defining a class BaseModel that defines all common attributes/methods for other 
 
 import uuid
 from datetime import datetime
-import models
+from models import storage
 
 
 class BaseModel:
@@ -24,14 +24,14 @@ class BaseModel:
         self.id = str(uuid.uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
-        if len(kwargs) is not None:
+        if kwargs is not None:
             for key,value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
                     self.__dict__[key] = datetime.strptime(value, dateFormat)
                 else:
                     self.__dict__[key] = value
         else:
-            models.storage.new(self)
+            storage.new(self)
 
     def __str__(self):
         """
@@ -45,8 +45,8 @@ class BaseModel:
         updates the public instance attribute updated_at with the current datetime
         """
 
-        self.updated_at = datetime.today()
-        models.storage.save()
+        self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """
