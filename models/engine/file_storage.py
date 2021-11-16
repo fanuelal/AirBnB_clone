@@ -51,6 +51,7 @@ class FileStorage:
         serializes __objects to the JSON file(path: __file_path)
         """
         file = FileStorage.__file_path
+        FileStorage.__objects = BaseModel.to_dict()
         with open(file, 'w') as jsonFile:
             jsonFile.write(json.dumps(FileStorage.__objects,
                     cls=MyEncoder))
