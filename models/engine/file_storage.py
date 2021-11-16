@@ -4,13 +4,7 @@ from models.base_model import BaseModel
 import os
 from json import JSONEncoder
 from datetime import datetime
-<<<<<<< HEAD
-import os
-from models.base_model import BaseModel
-=======
 from models.user import User
-
->>>>>>> models
 """
 FILE STORAGE IN JSON FILE
 """
@@ -55,12 +49,10 @@ class FileStorage:
         serializes __objects to the JSON file(path: __file_path)
         """
         file = FileStorage.__file_path
-<<<<<<< HEAD
         FileStorage.__objects = models.base_model.BaseModel.to_dict.dict_repr
         """ jsnDump=json.dumps(FileStorage.__objects)"""
         with open(file, "w", encoding="utf-8") as jsonFile:
             json.dump(FileStorage.__objects, jsonFile)
-            
 =======
         FileStorage.__objects = BaseModel.to_dict()
         with open(file, 'w') as jsonFile:
