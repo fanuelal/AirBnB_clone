@@ -4,12 +4,22 @@ import cmd
 import models
 from models import storage
 from models.base_model import BaseModel
+from models.place import Place
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.user import User
+from models.review import Review
+
 
 class HBNBCommand(cmd.Cmd):
     """
     making the console
     """
-    all_classes = {'BaseModel' : BaseModel}
+    all_classes = {'BaseModel' : BaseModel, 'User' : User, 'State' : State,
+                   'City': City, 'Amenity' : Amenity, 'Place' : Place,
+                   'Review' : Review}
+
     prompt = '(hbnb)'
 
     def do_quit(self, arg):

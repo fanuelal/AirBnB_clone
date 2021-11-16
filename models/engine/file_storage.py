@@ -5,6 +5,7 @@ from models.base_model import BaseModel
 import os
 from json import JSONEncoder
 from datetime import datetime
+from models.user import User
 
 """
 FILE STORAGE IN JSON FILE
