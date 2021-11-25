@@ -56,9 +56,10 @@ padding: 15px;
 	width: 100px;
 }
 .description{
-	font-size: 15px;
-	margin-top: 30px;
-	display: flex;
+    text-align: left;
+    font-size: 15px;
+    margin-top: 30px;
+    display: flex;
     flex-direction: row;
     flex-flow: wrap;
     justify-content: space-around;
