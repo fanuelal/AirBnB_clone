@@ -23,7 +23,7 @@
 .btn_search:hover{
 	opacity: 90%;
 }
-.locations, .amenities{
+.locations, filters .amenities{
 	height: 100%;
 	width: 25%;
 	float: left;
