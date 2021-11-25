@@ -1,0 +1,154 @@
+.places{
+	width: 100%;
+	display: flex;
+	margin-top: 20px;
+	flex-flow: row wrap;
+    justify-content: center;
+}
+.places h1{
+font-size: 30px;
+text-align: left;
+padding: 15px;
+height: 70px;
+}
+.places article{
+	width: 390px;
+	padding: 20px;
+	margin: 20px;
+	margin-top: 60px;
+	border: solid 1px #FF5A5F;
+	border-radius: 4px;
+	font-size: 30px;
+	text-align: center;
+}
+.places h2{
+	text-align: center;
+	font-size: 30px;
+	align-content: center;
+}
+.price_by_night{
+	display: flex;
+	justify-content: center;
+	color: #FF5A5F;
+	border: solid 4px #FF5A5F;
+	border-radius: 100%;
+	min-width: 60px;
+	height: 60px;
+	font-size: 30px;
+	text-align: center;
+	line-height: 50px;
+	margin-bottom: 20px;
+	margin-left: 10px;
+	margin-top: -15px;
+}
+.information{
+	height: 80px;
+	border-top: solid 1px #DDDDDD; 
+	border-bottom: solid 1px #DDDDDD;
+	display: flex;
+    font-size: 16px;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    width: 100%;
+}
+.user{
+	float: left;
+	font-size: 16px;
+	margin-top: 10px;
+}
+.max_guest,.number_rooms,.number_bathrooms{
+	width: 100px;
+}
+.description{
+	font-size: 15px;
+	margin-top: 30px;
+	display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+	text-align: left;
+    justify-content: space-around;
+}
+.icon_guest,.icon_bed,.icon_bath{
+	width: 50px;
+	height: 50px;
+	align-items: center;
+	margin-left: 20px;
+}
+.icon_bed{background-image: url("../images/icon_bed.png");}
+.icon_bath{background-image: url("../images/icon_bath.png");}
+.icon_guest{background-image: url("../images/icon_group.png");}
+.placeSample{
+	display: flex;
+	justify-content: right;
+	flex-flow: row wrap;
+}
+.placeSample h2{
+	margin-right: 30px;
+	margin-top: 0;
+	margin-bottom: 30px;
+}
+.placeSample .amenities{
+	margin-top: 40px;
+	text-align:left;
+	width: 100%;
+}
+.placeSample .amenities h2{
+	font-size: 16px;
+	border-bottom: solid 1px #DDDDDD;
+	text-align: left;
+	width: 100%;
+	padding-bottom: 10px;
+}
+.placeSample .amenities div{
+	position: absolute;
+	margin-top: 10px;
+}
+.placeSample .amenities li{list-style: none;}
+.placeSample .amenities p{
+	line-height: 35px;
+	font-size: 15px;
+	list-style: none;
+	margin-left: 30px;
+	text-align: left;
+	margin-top: 10px;
+}
+.icon_tv,.icon_pet,.icon_wifi{
+	height: 20px;
+	width: 20px;
+	background-size: 100%;
+	margin-top: 10px;
+}
+.icon_tv{background-image: url("../images/icon_tv.png");}
+.icon_wifi{background-image: url("../images/icon_wifi.png");}
+.icon_pet{background-image: url("../images/icon_pets.png");}
+.reviews{
+	width: 100%;
+	margin-top: 40px;
+}
+.reviews h2{
+	font-size: 16px;
+	border-bottom: solid 1px #DDDDDD;
+	text-align: left;
+	width: 100%;
+	height: 25px;
+}
+.reviews li{list-style: none;text-align: left;}
+.reviews h3{font-size: 14px;text-align: left;margin-top: 10px;}
+.reviews p{font-size: 12px;text-align: left;margin-top: 5px;}
+@media (max-width: 1200px)
+{
+	.places{
+		display: flex;
+		justify-content: flex-start;
+	}
+	.places h1{
+		position: absolute;
+	}
+	.placeSample{
+		display: flex;
+		justify-content: center;
+		flex-direction: row;
+		left: 0;
+		width: 60%;
+	}
+}
